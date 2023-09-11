@@ -1,6 +1,5 @@
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -29,10 +28,10 @@ public class DupFileDeleter
 		}
 
 		//Display FileNames
-		// for(int i = 0; i<fileList.size(); i++) {
-		// 	String fileName = fileList.get(i);
-		// 	System.out.println(fileName);
-		// }
+		for(int i = 0; i<fileList.size(); i++) {
+			String fileName = fileList.get(i);
+			System.out.println(fileName);
+		}
 
 
 		//Create Menu
@@ -66,13 +65,13 @@ public class DupFileDeleter
 		Input.close();
 	}
 
-	public static void DisplayList(String list[]) {
+	// public static void DisplayList(String list[]) {
 
-		for(int i = 0; i<list.size(); i++) {
-			String fileName = list.get(i);
-			System.out.println(fileName);
-		}
-	}
+	// 	for(int i = 0; i<list.size(); i++) {
+	// 		String fileName = list.get(i);
+	// 		System.out.println(fileName);
+	// 	}
+	// }
 
 
 
