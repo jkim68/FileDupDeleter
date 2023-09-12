@@ -3,25 +3,35 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class DupFileDeleter
-{
 	/*Things To Do:
-	 * Access Files
-	 * Display File Names
-	 * Menu Format
+	 * Access Files X
+	 * Display File Names X
+	 * Menu Format X
 	 * Delete Files that are duplicated
 	 * Give an option to delete only one of the files that is duplicated
+	 * "C:\\Users\\jacob\\Desktop\\FileDupDeleter\\Files"
+	 * "C:\\Users\\jacob\\Desktop\\FileDupDeleter\\Files"
 	 */
+
+public class DupFileDeleter
+{
 	public static void main(String[] args) {
 
-		//Get Files
 		
-		File directory = new File("C:\\Users\\jacob\\Desktop\\FileDupDeleter\\Files");
+		Scanner Input = new Scanner(System.in);
+		System.out.println("Input location of files to be deleted: ");
+		String fileLocation = Input.nextLine();
+		String finalFileString = fileLocation.replace("\\", "\\\\");
+		//Get Files
+		File directory = new File(finalFileString);
+		System.out.println(finalFileString);
 		List<String> fileList = new ArrayList<>();
 
+		// Put file names in string arraylist
 		for (File file: directory.listFiles()) {
 			fileList.add(file.getName());
 		}
+
 		String first = "";
 		for (int i=0; i<fileList.size(); i++) {
 			first = fileList.get(0);
@@ -33,16 +43,7 @@ public class DupFileDeleter
 			System.out.println(fileName);
 		}
 
-
-		//Create Menu
-		String Menu = "Duplicate File Deleter Menu \n" 
-						+ "1: Display File Names \n"
-						+ "2: Delete Duplicated Files \n"
-						+ "3: Delete files of a specific file type \n"
-						+ "4: Delete only one of duplciated files (webm) \n"
-						+ "5: Exit";
-		System.out.println(Menu);
-		Scanner Input = new Scanner(System.in);
+		displayMenu();
 		int UserInput = Input.nextInt();
 		while (UserInput != 5) {
 		switch (UserInput) {
@@ -65,6 +66,17 @@ public class DupFileDeleter
 		Input.close();
 	}
 
+	//Create Menu
+	public static void displayMenu() {
+		String Menu = "Duplicate File Deleter Menu \n" 
+						+ "1: Display File Names \n"
+						+ "2: Delete Duplicated Files \n"
+						+ "3: Delete files of a specific file type \n"
+						+ "4: Delete only one of duplciated files (webm) \n"
+						+ "5: Exit";
+		System.out.println(Menu);
+	}
+
 	// public static void DisplayList(String list[]) {
 
 	// 	for(int i = 0; i<list.size(); i++) {
@@ -73,6 +85,24 @@ public class DupFileDeleter
 	// 	}
 	// }
 
-
+	//REMOVEDUP CLASS
+// public static int removeDuplicateElements(int arr[], int n){  
+//         if (n==0 || n==1){  
+//             return n;  
+//         }  
+//         int[] temp = new int[n];  
+//         int j = 0;  
+//         for (int i=0; i<n-1; i++){  
+//             if (arr[i] != arr[i+1]){  
+//                 temp[j++] = arr[i];  
+//             }  
+//          }  
+//         temp[j++] = arr[n-1];     
+//         // Changing original array  
+//         for (int i=0; i<j; i++){  
+//             arr[i] = temp[i];  
+//         }  
+//         return j;  
+//     }  
 
 }
