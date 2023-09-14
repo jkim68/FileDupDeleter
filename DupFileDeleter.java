@@ -10,51 +10,53 @@ import java.util.Scanner;
 	 * Delete Files that are duplicated
 	 * Give an option to delete only one of the files that is duplicated
 	 * "C:\\Users\\jacob\\Desktop\\FileDupDeleter\\Files"
-	 * "C:\\Users\\jacob\\Desktop\\FileDupDeleter\\Files"
+	 * This PC\motorola one 5G ace\Internal shared storage\Music
+	 * This PC\motorola one 5G ace\Internal shared storage\Music
+	 * "C:\Users\jacob\.cache"
 	 */
 
 public class DupFileDeleter
 {
 	public static void main(String[] args) {
 
-		
+		//Prompt user for file location
 		Scanner Input = new Scanner(System.in);
-		System.out.println("Input location of files to be deleted: ");
+		System.out.println("Input location of files: ");
 		String fileLocation = Input.nextLine();
+
+		//Modify user file location
 		String finalFileString = fileLocation.replace("\\", "\\\\");
+		
 		//Get Files
 		File directory = new File(finalFileString);
-		System.out.println(finalFileString);
-		List<String> fileList = new ArrayList<>();
+
+		//Output File location
+		// System.out.println(finalFileString);
 
 		// Put file names in string arraylist
+		List<String> fileList = new ArrayList<>();
 		for (File file: directory.listFiles()) {
 			fileList.add(file.getName());
 		}
+		fileList.sort(String::compareToIgnoreCase);
 
 		String first = "";
 		for (int i=0; i<fileList.size(); i++) {
 			first = fileList.get(0);
 		}
-
-		//Display FileNames
-		for(int i = 0; i<fileList.size(); i++) {
-			String fileName = fileList.get(i);
-			System.out.println(fileName);
-		}
-
+		
 		displayMenu();
 		int UserInput = Input.nextInt();
 		while (UserInput != 5) {
 		switch (UserInput) {
 			
-			case 1:		;
+			case 1:	displayFileNames(fileList);
 					break;
 			case 2: System.out.println("you chose 2");
 					break;
 			case 3: System.out.println("you chose 3");
 					break;
-			case 4: System.out.println("you chose 4");
+			case 4: System.out.println(first);
 					break;
 			
 		}
@@ -77,13 +79,13 @@ public class DupFileDeleter
 		System.out.println(Menu);
 	}
 
-	// public static void DisplayList(String list[]) {
-
-	// 	for(int i = 0; i<list.size(); i++) {
-	// 		String fileName = list.get(i);
-	// 		System.out.println(fileName);
-	// 	}
-	// }
+	//Display FileNames
+	public static void displayFileNames(List<String> list) {
+		for(int i = 0; i<list.size(); i++) {
+			String fileName = list.get(i);
+			System.out.println(fileName);
+		}
+	}
 
 	//REMOVEDUP CLASS
 // public static int removeDuplicateElements(int arr[], int n){  
